@@ -18,7 +18,7 @@ public class OtherDigitalCameraBeanFactoryPostProcessor implements BeanFactoryPo
         String[] beanDefinitionNames = beanFactory.getBeanDefinitionNames();
 
         //перебираем все имена
-        for(String name: beanDefinitionNames){
+        for (String name : beanDefinitionNames) {
 
             //получаем BeanDefinition по имени
             BeanDefinition beanDefinition = beanFactory.getBeanDefinition(name);
@@ -38,10 +38,10 @@ public class OtherDigitalCameraBeanFactoryPostProcessor implements BeanFactoryPo
                 OtherDigitalCamera annotation = beanClass.getAnnotation(OtherDigitalCamera.class);
 
                 //проверяем, содержал ли класс эту аннотацию
-                if(annotation!=null){
+                if (annotation != null) {
 
                     //получаем значение указанное в параметрах аннотации(класс пленки, которую необходимо использовать)
-                    Class OtherDigitalCameraName =annotation.digitalCameraClass();
+                    Class OtherDigitalCameraName = annotation.digitalCameraClass();
 
                     //меняем класс будущего бина!
                     beanDefinition.setBeanClassName(OtherDigitalCameraName.getName());
@@ -56,8 +56,6 @@ public class OtherDigitalCameraBeanFactoryPostProcessor implements BeanFactoryPo
         }
 
     }
-
-
 
 
 }

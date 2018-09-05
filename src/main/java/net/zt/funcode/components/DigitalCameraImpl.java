@@ -8,52 +8,46 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
 public class DigitalCameraImpl implements Camera {
-	
-	
-	@Autowired
-	private CameraRoll cameraRoll;
-	
-	@Value("false")
-	private boolean broken;
-	
-	
-	public CameraRoll getCameraRoll() {
-		return cameraRoll;
-	}
 
-	public void setCameraRoll(CameraRoll cameraRoll) {
-		this.cameraRoll = cameraRoll;
-	}
+    @Autowired
+    private CameraRoll cameraRoll;
+
+    @Value("false")
+    private boolean broken;
 
 
-	public boolean isBroken() {
-		return broken;
-	}
+    public CameraRoll getCameraRoll() {
+        return cameraRoll;
+    }
 
-   public void breaking(){
-	   
-	   this.broken=true;
-   }
+    public void setCameraRoll(CameraRoll cameraRoll) {
+        this.cameraRoll = cameraRoll;
+    }
 
-   
 
-	public void doPhotograph(){
-		
-		if(isBroken()){
-			
-			System.out.println("У фотика сломана матрица!");
-			return;
-		}
-		    System.out.println("Сделана фотография jpeg");
-		    cameraRoll.processing();
-		
-		
-	}
+    public boolean isBroken() {
+        return broken;
+    }
 
-	@PostConstruct
-	public void ready() {
-		
-		System.out.println("Фотоаппарат is ready to use!");
-		
-	}
+    public void breaking() {
+
+        this.broken = true;
+    }
+
+    public void doPhotograph() {
+        if (isBroken()) {
+
+            System.out.println("У фотика сломана матрица!");
+            return;
+        }
+        System.out.println("Сделана фотография jpeg");
+        cameraRoll.processing();
+    }
+
+    @PostConstruct
+    public void ready() {
+
+        System.out.println("Фотоаппарат is ready to use!");
+
+    }
 }

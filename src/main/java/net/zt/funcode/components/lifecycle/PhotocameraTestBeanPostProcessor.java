@@ -9,25 +9,25 @@ import net.zt.funcode.components.Camera;
 @Component
 public class PhotocameraTestBeanPostProcessor implements BeanPostProcessor {
 
-	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-		
-		//в данном методе просто возвращаем бин
-		return bean;
-	}
+    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 
-	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-		
-		//находим бин класса фотокамеры
-		if(bean instanceof Camera){
-			
-		System.out.println("Делаю пробное фото!");
-		//делаем пробное фото
-		((Camera) bean).doPhotograph();
-		System.out.println("Отлично!Работает!");
-		
-		}
-		return bean;
-		
-	}
+        //в данном методе просто возвращаем бин
+        return bean;
+    }
+
+    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+
+        //находим бин класса фотокамеры
+        if (bean instanceof Camera) {
+
+            System.out.println("Делаю пробное фото!");
+            //делаем пробное фото
+            ((Camera) bean).doPhotograph();
+            System.out.println("Отлично!Работает!");
+
+        }
+        return bean;
+
+    }
 
 }
